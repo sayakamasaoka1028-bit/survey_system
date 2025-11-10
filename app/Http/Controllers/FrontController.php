@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Age;   // 年代用モデル
-use App\Models\Answer; // 回答用モデル
+use App\Models\Age;
+use App\Models\Answer;
 
 class FrontController extends Controller
 {
@@ -20,6 +20,7 @@ class FrontController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|max:50',
+            'gender' => 'required',
             'email' => 'required|email',
             'age_id' => 'required',
             'opinion' => 'required|max:10000',
@@ -34,9 +35,19 @@ class FrontController extends Controller
     // 保存
     public function store(Request $request)
     {
-        $data = $request->all();
-        Answer::create($data);
+        $validated = $request->validate([
+            'name' => 'required|max:50',
+            'gender' => 'required',
+            'email' => 'required|email',
+            'age_id' => 'required',
+            'opinion' => 'required|max:10000',
+        ]);
 
-        return redirect()->route('index')->with('message', 'アンケートを送信しました');
+        $validated['is_send_email'] = $request->has('is_send_email') ? 1 : 0;
+
+        Answer::create($validated);
+
+        return redirect()->route('thanks')
+                         ->with('message', 'アンケートを送信しました');
     }
-}
+} // ← クラスの閉じカッコを忘れない
