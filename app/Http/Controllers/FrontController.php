@@ -32,7 +32,7 @@ class FrontController extends Controller
         return view('confirm', compact('data', 'age'));
     }
 
-    // 保存
+    // 保存処理
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -47,7 +47,6 @@ class FrontController extends Controller
 
         Answer::create($validated);
 
-        return redirect()->route('thanks')
-                         ->with('message', 'アンケートを送信しました');
+        return view('thanks');
     }
-} // ← クラスの閉じカッコを忘れない
+}

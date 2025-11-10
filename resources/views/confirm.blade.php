@@ -5,13 +5,21 @@
     <title>確認画面</title>
 </head>
 <body>
-    <h1>入力内容の確認</h1>
-
-    <p>お名前：{{ $data['name'] }}</p>
-    <p>メールアドレス：{{ $data['email'] }}</p>
+    <h1>内容確認</h1>
+    <p>氏名：{{ $data['name'] }}</p>
+    <p>性別：{{ $data['gender'] }}</p>
     <p>年代：{{ $age }}</p>
-    <p>ご意見：{!! nl2br(e($data['opinion'])) !!}</p>
+    <p>メールアドレス：{{ $data['email'] }}</p>
+    <p>メール送信可否:
+    @if(!empty($data['can_send_email']))
+        送信可
+    @else
+        送信不可
+    @endif
 
+
+    </p>
+    <p>ご意見：{!! nl2br(e($data['opinion'])) !!}</p>
     <form action="{{ route('store') }}" method="POST">
         @csrf
         <input type="hidden" name="name" value="{{ $data['name'] }}">
@@ -22,7 +30,7 @@
     </form>
 
     <form action="{{ route('index') }}" method="GET">
-        <button type="submit">修正する</button>
+        <button type="submit">再入力</button>
     </form>
 </body>
 </html>

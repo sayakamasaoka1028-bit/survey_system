@@ -28,7 +28,7 @@
     <input type="text" name="name" value="{{ old('name') }}"><br><br>
 
     <label>性別：</label><br>
-    <input type="radio" name="gender" value="男性" {{ old('gender') == '男性' ? 'checked' : '' }}> 男性
+    <input type="radio" name="gender" value="男性" {{ old('gender') == '男性' ? 'checked' : '' }}> 男性<br><br>
     <input type="radio" name="gender" value="女性" {{ old('gender') == '女性' ? 'checked' : '' }}> 女性<br><br>
 
     <label>年代：</label><br>
@@ -44,12 +44,12 @@
     <input type="email" name="email" value="{{ old('email') }}"><br><br>
 
     <label>メール送信可否：</label><br>
-    <input type="checkbox" name="can_send_email" value="1" {{ old('can_send_email') ? 'checked' : '' }}> 送信可<br><br>
+    <input type="checkbox" name="is_send_email" value="1" {{ old('is_send_email') ? 'checked' : '' }}> 送信可<br><br>
 
     <label>ご意見：</label><br>
     <textarea name="opinion">{{ old('opinion') }}</textarea><br><br>
 
     <button type="submit">確認</button>
-　　　　</form>
-　　　　</body>
-　　　　</html>
+</form>
+</body>
+</html>
