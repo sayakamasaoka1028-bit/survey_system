@@ -47,6 +47,7 @@ class FrontController extends Controller
 
         Answer::create($validated);
 
-        return view('thanks');
+// POST後はサンクスページへリダイレクト
+    return redirect()->route('thanks')->with('message', 'アンケートを送信しました。');
     }
 }

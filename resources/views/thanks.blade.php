@@ -11,7 +11,7 @@
     @endif
 
     <form action="{{ route('index') }}" method="GET">
-        <button type="submit">トップページへ</button>
+        <button type="submit" style="background-color: #00BFFF">トップページへ</button>
     </form>
 </body>
 </html>
