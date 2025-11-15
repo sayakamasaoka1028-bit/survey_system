@@ -18,3 +18,12 @@ Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 Route::get('/confirm', function () {
     return redirect()->route('index');
 });
+// 詳細画面
+Route::get('/system/answers/{answer}', [AdminController::class, 'show'])
+    ->name('admin.show');
+// 削除
+Route::delete('/system/answers/{answer}', [AdminController::class, 'destroy'])
+    ->name('admin.destroy');
+
+Route::delete('/system/answers', [AdminController::class, 'massDestroy'])
+    ->name('admin.massDestroy');

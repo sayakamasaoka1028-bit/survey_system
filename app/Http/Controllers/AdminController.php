@@ -59,4 +59,28 @@ class AdminController extends Controller
 
         return view('admin.index', compact('answers'));
     }
+public function show(Answer $answer)
+{
+    return view('admin.show', compact('answer'));
+}
+public function destroy(Answer $answer)
+{
+    $answer->delete();
+
+    return redirect()->route('admin.index')->with('message', '削除しました');
+}
+public function massDestroy(Request $request)
+{
+    $ids = $request->ids;
+
+    if (!$ids) {
+        return redirect()->back()->with('message', '削除する項目を選択してください');
+    }
+
+    Answer::whereIn('id', $ids)->delete();
+
+    return redirect()->route('admin.index')
+        ->with('message', '選択したアンケートを削除しました');
+}
+
 }
