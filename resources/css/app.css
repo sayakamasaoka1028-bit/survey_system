@@ -9,3 +9,57 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+/* ページネーション矢印（SVG）のサイズを小さくする */
+nav[role="navigation"] svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* ページ番号のサイズを小さくする */
+nav[role="navigation"] span,
+nav[role="navigation"] a {
+    font-size: 12px;
+    padding: 4px 8px;
+}
+/* ページネーション矢印を強制的に小さくする */
+nav[role="navigation"] svg {
+    width: 14px !important;
+    height: 14px !important;
+}
+
+/* ページ番号のサイズと余白を調整 */
+nav[role="navigation"] span,
+nav[role="navigation"] a {
+    font-size: 12px !important;
+    padding: 3px 6px !important;
+}
+/* ページネーション全体を小さくする */
+nav[role="navigation"] {
+    font-size: 12px !important;
+}
+
+/* 矢印（« » / »）のサイズを小さくする */
+nav[role="navigation"] svg,
+nav[role="navigation"] .pagination-arrow {
+    width: 14px !important;
+    height: 14px !important;
+	}
+
+/* ページ番号ボタンの余白とサイズを調整 */
+nav[role="navigation"] span,
+nav[role="navigation"] a {
+    font-size: 12px !important;
+    padding: 3px 6px !important;
+}
+/* ページネーション全体 */
+nav[role="navigation"] {
+    font-size: 12px !important;  /* 全体のフォントサイズを小さく */
+}
+
+/* 矢印（« » / »）やページ番号ボタン */
+nav[role="navigation"] span,
+nav[role="navigation"] a {
+    font-size: 12px !important;   /* 数字と矢印の文字サイズ */
+    padding: 3px 6px !important;  /* ボタン余白 */
+    line-height: 1.2 !important;  /* 高さを詰める */
+}

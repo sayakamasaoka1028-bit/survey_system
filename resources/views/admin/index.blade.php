@@ -125,7 +125,7 @@
 </form>
 
 <!-- ページネーション -->
-{{ $answers->links() }}
+{{ $answers->links('vendor.pagination.custom') }}
 
 <!-- 🔹 全選択用JS -->
 <script>
