@@ -63,3 +63,50 @@ nav[role="navigation"] a {
     padding: 3px 6px !important;  /* ボタン余白 */
     line-height: 1.2 !important;  /* 高さを詰める */
 }
+/* テーブル全体の基本 */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* ヘッダー */
+thead th {
+    background-color: #f3f4f6; /* Tailwindのbg-gray-100 */
+    font-weight: 600;
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #d1d5db; /* Tailwindのborder-gray-300 */
+}
+
+/* 行の交互色 */
+tbody tr:nth-child(odd) {
+    background-color: #ffffff; /* 白 */
+}
+tbody tr:nth-child(even) {
+    background-color: #f9fafb; /* bg-gray-50 */
+}
+
+/* 行ホバー */
+tbody tr:hover {
+    background-color: #e5e7eb; /* bg-gray-200 */
+}
+
+/* セル */
+td {
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid #d1d5db;
+}
+
+/* ボタン */
+button {
+    background-color: #3b82f6; /* bg-blue-500 */
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem; /* rounded-md */
+    transition: background-color 0.2s;
+}
+button:hover {
+    background-color: #2563eb; /* hover:bg-blue-600 */
+}
+
+/* ページネーション調整は custom.blade.php で済んでいるのでここは不要 */

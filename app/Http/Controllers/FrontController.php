@@ -16,21 +16,25 @@ class FrontController extends Controller
     }
 
     // 確認画面
-    public function confirm(Request $request)
-    {
-        $validated = $request->validate([
-            'name' => 'required|max:50',
-            'gender' => 'required',
-            'email' => 'required|email',
-            'age_id' => 'required',
-            'opinion' => 'required|max:10000',
-        ]);
+public function confirm(Request $request)
+{
+    $validated = $request->validate([
+        'name' => 'required|max:50',
+        'gender' => 'required',
+        'email' => 'required|email',
+        'age_id' => 'required',
+        'opinion' => 'required|max:10000',
+        'is_send' => 'nullable',
+    ]);
 
-        $data = $validated;
-        $age = Age::find($data['age_id'])->age;
+    // 入力内容
+    $data = $validated;
 
-        return view('confirm', compact('data', 'age'));
-    }
+    // 年代マスタから取得（★これが必要！）
+    $age = Age::find($data['age_id']);
+
+    return view('confirm', compact('data', 'age'));
+}
 
     // 保存処理
     public function store(Request $request)

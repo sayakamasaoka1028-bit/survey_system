@@ -3,39 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <title>確認画面</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-    <h1>内容確認</h1>
-    <p>氏名：{{ $data['name'] }}</p>
-    <p>性別：{{ $data['gender'] }}</p>
-    <p>年代：{{ $age }}</p>
-    <p>メールアドレス：{{ $data['email'] }}</p>
-    <p>メール送信可否:
-    @if(!empty($data['is_send_email']))
-        送信可
-    @else
-        送信不可
-    @endif
 
+<body class="bg-light">
 
-    </p>
-    <p>ご意見：{!! nl2br(e($data['opinion'])) !!}</p>
-<form action="{{ route('store') }}" method="POST">
-    @csrf
-    <input type="hidden" name="name" value="{{ $data['name'] }}">
-    <input type="hidden" name="gender" value="{{ $data['gender'] }}">
-    <input type="hidden" name="email" value="{{ $data['email'] }}">
-    <input type="hidden" name="age_id" value="{{ $data['age_id'] }}">
-    <input type="hidden" name="opinion" value="{{ $data['opinion'] }}">
-    <input type="hidden" name="is_send_email" value="{{ $data['is_send_email'] ?? 0 }}">
+<div class="container mt-5">
 
-    <button type="submit">送信</button>
-</form>
+    <h1 class="text-center mb-4">入力内容の確認</h1>
 
+    <div class="card shadow-sm p-4">
 
+        <div class="mb-3">
+            <label class="form-label fw-bold">氏名</label>
+            <p class="form-control">{{ $data['name'] }}</p>
+        </div>
 
-    <form action="{{ route('index') }}" method="GET">
-        <button type="submit">再入力</button>
-    </form>
+        <div class="mb-3">
+            <label class="form-label fw-bold">性別</label>
+            <p class="form-control">{{ $data['gender'] }}</p>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label fw-bold">年代</label>
+            <p class="form-control">{{ $age->age }}</p>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label fw-bold">メールアドレス</label>
+            <p class="form-control">{{ $data['email'] }}</p>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label fw-bold">メール送信可否</label>
+            <p class="form-control">
+                {{ ($data['is_send'] ?? false) ? '可' : '不可' }}
+            </p>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label fw-bold">ご意見</label>
+            <p class="form-control" style="white-space: pre-wrap;">
+                {{ $data['opinion'] }}
+            </p>
+        </div>
+
+        <div class="d-flex justify-content-between mt-4">
+            <button class="btn btn-secondary px-4" onclick="history.back()">戻る</button>
+
+            <form action="{{ route('store') }}" method="POST">
+                @csrf
+                @foreach ($data as $key => $value)
+                    <input type="hidden" name="{{ $key }}" value="{{ $value }}">
+                @endforeach
+
+                <input type="hidden" name="age" value="{{ $age->age }}">
+
+                <button type="submit" class="btn btn-primary px-4">送信</button>
+            </form>
+        </div>
+
+    </div>
+
+</div>
+
 </body>
 </html>
