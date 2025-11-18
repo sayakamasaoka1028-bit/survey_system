@@ -27,10 +27,10 @@
     <br><br>
 
     {{-- 削除ボタン（課題12用） --}}
-    <form action="{{ route('admin.destroy', $answer->id) }}" method="POST" onsubmit="return confirm('削除してもよろしいですか？');">
-        @csrf
-        @method('DELETE')
-        <button type="submit">削除</button>
+    <form action="{{ route('admin.destroy', $answer->id) }}" method="POST" onsubmit="return confirm('本当に削除しますか？');">
+    @csrf
+    @method('DELETE')
+    <button type="submit">削除</button>
     </form>
 </body>
 </html>
