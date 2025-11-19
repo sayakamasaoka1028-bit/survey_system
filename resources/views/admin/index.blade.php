@@ -113,7 +113,7 @@
                 <td>{{ $answer->age->age ?? '-' }}</td>
                 <td>{{ $answer->is_send_email == 1 ? '可' : '不可' }}</td>
                 <td>{{ $answer->created_at }}</td>
-                <td><a href="{{ route('admin.show', $answer->id) }}">詳細</a></td>
+                <td><a href="{{ route('admin.detail', $answer->id) }}">詳細</a></td>
             </tr>
             @endforeach
         </tbody>
